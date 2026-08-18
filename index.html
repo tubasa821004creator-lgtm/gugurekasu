@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ググレカス検索</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:Arial,"Noto Sans JP",sans-serif;background:#fff;color:#202124}.wrap{width:min(92%,650px);text-align:center}.logo{font-size:clamp(3rem,12vw,6rem);font-weight:700;letter-spacing:-5px;margin-bottom:30px}.logo span:nth-child(1){color:#4285f4}.logo span:nth-child(2){color:#ea4335}.logo span:nth-child(3){color:#fbbc05}.logo span:nth-child(4){color:#4285f4}.logo span:nth-child(5){color:#34a853}.logo span:nth-child(6){color:#ea4335}.search{display:flex;gap:10px}.search input{flex:1;padding:15px 20px;border:1px solid #dfe1e5;border-radius:28px;font-size:17px;outline:0;box-shadow:0 2px 8px #0001}.search button,.quick button{border:0;border-radius:24px;padding:0 22px;font-weight:700;cursor:pointer}.search button{background:#4285f4;color:#fff}.quick{margin-top:28px;color:#777}.quick button{padding:11px 18px;background:#f1f3f4;color:#202124}.note{margin-top:32px;color:#777;font-size:13px}@media(max-width:600px){.search{flex-direction:column}.search button{height:48px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+<form class="search" id="form">
+<input id="query" placeholder="検索ワードを入力" autocomplete="off">
+<button>検索</button>
+</form>
+<div class="quick">
+<p>🔎 「ググレカス」を検索する</p>
+<button type="button" id="gugure">ググレカス</button>
+</div>
+<p class="note">検索するとGoogleの検索結果ページが開きます。</p>
+</main>
+<script>
+function searchGoogle(word){
+  location.href="https://www.google.com/search?q="+encodeURIComponent(word);
+}
+document.getElementById("form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const q=document.getElementById("query").value.trim();
+  if(q) searchGoogle(q);
+});
+document.getElementById("gugure").onclick=()=>searchGoogle("ググレカス");
+</script>
+</body>
+</html>
